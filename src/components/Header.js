@@ -1,14 +1,15 @@
 import Navbar from "./Navbar";
+import { Link } from "react-router-dom";
 
 const Header = () => {
   return (
-    <header>
+    <header className="header">
       <div className="logo">
-        <a href="/">
-          <img src="logo.png" alt="Brand Logo" />
-        </a>
+        <Link to="/">
+          <img src="/assets/icons_assets/Logo.svg" alt="logo" />
+        </Link>
       </div>
-      <Navbar></Navbar>
+      <Navbar />
     </header>
   );
 };

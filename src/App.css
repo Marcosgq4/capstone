@@ -1,38 +1,317 @@
-.App {
-  text-align: center;
+/* Images */
+
+.food-image {
+  max-width: 100%; /* Ensure the image is responsive */
+  height: auto; /* Maintain aspect ratio */
+  width: 100px; /* Set a specific width */
+  object-fit: cover;
+  border-top-left-radius: 8px;
+  border-top-right-radius: 8px;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.star-icon {
+  width: 30px; /* Adjust size as needed */
+  height: auto; /* Maintains aspect ratio */
+  margin-right: 2px; /* Adds a little space between stars */
+  vertical-align: middle; /* Aligns stars with text if needed */
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
+.user-image {
+  width: 125px; /* Set the desired width */
+  height: 125px; /* Set the desired height to keep a square ratio */
+  object-fit: cover; /* Ensures the image scales without distortion */
+  margin-top: 0.7rem; /* Adds space between image and text */
+  margin-bottom: 0.9rem;
+}
+
+.about-image {
+  width: 140px; /* Set a fixed width */
+  height: 180px; /* Set a taller height for portrait orientation */
+  object-fit: cover; /* Crop the image to fit the specified dimensions */
+  object-position: 80% center; /* Shifts the focus slightly to the right */
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* grid.css */
+
+.grid {
+  display: grid;
+  gap: 1rem;
+  grid-template-columns: repeat(3, 1fr); /* 3 columns by default */
+  justify-content: space-around;
+  align-items: start;
+}
+
+/* Responsive Layout for Smaller Screens */
+@media (max-width: 768px) {
+  .grid {
+    grid-template-columns: 1fr; /* Single column layout on mobile */
+    justify-items: center; /* Center-align items */
   }
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+/* Navbar */
+
+.navbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1rem 2rem;
+}
+
+.logo {
+  font-size: 1.5rem;
+  font-weight: bold;
+}
+
+/* Hide the toggle button and display nav links inline by default */
+.menu-toggle {
+  display: none;
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+.menu-icon {
+  width: 24px; /* Adjust as needed */
+  height: 24px;
+}
+
+.nav-links ul {
+  display: flex;
+  list-style: none;
+  gap: 1rem;
+}
+
+/* Responsive Styles for Small Screens */
+@media (max-width: 768px) {
+  .menu-toggle {
+    display: block; /* Show toggle button on smaller screens */
+    font-size: 1.5rem;
+    background: none;
+    border: none;
+    cursor: pointer;
+  }
+  .nav-links {
+    display: none; /* Hide links by default on small screens */
+    position: absolute;
+    top: 60px;
+    right: 0;
+    width: 100%;
+    background-color: #fff;
+    text-align: center;
+  }
+
+  .nav-links.open {
+    display: block; /* Show links when menu is open */
+  }
+
+  .nav-links ul {
+    flex-direction: column;
+    padding: 0;
+  }
+
+  .nav-links ul li {
+    padding: 0.5rem 0;
+  }
+}
+
+.header {
+  /* Navbar next to logo in the header */
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1rem 2rem;
+}
+
+/* Hero Section */
+
+/* Basic styling for hero section */
+.hero {
+  display: flex;
+  align-items: stretch;
+  justify-content: space-around;
+  padding: 2rem;
+}
+
+/* Ensure text and image containers take up available space */
+.hero-text {
+  flex: 1; /* Allow hero text to grow/shrink as needed */
+  padding-right: 1rem;
+  max-width: 400px;
+}
+
+.hero-image {
+  flex: 1; /* Allow hero image to grow/shrink to match text height */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  max-width: 200px;
+}
+
+.chef-image {
+  width: auto;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 8px; /* Optional: rounds image corners slightly */
+}
+
+/* Responsive styling for small screens */
+@media (max-width: 768px) {
+  .hero {
+    flex-direction: column; /* Stack text and image vertically */
+    text-align: center; /* Center-align text */
+    align-items: center;
+  }
+
+  .hero-text {
+    flex: 1;
+    padding-right: 0;
+    margin-bottom: 1rem;
+  }
+
+  .hero-image {
+    width: 100%; /* Make the image take full width on small screens */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .chef-image {
+    width: auto;
+    max-width: 100%; /* Ensure the image fits within the container */
+    height: auto; /* Maintain aspect ratio */
+    margin: 0 auto; /* Center the image horizontally */
+  }
+}
+
+/* Highlight Section */
+
+/* Container for each menu item */
+.menu-item {
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Add a subtle shadow for elevation */
+  overflow: hidden;
+  max-width: 300px; /* Set a max width for each card */
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  align-items: flex-start;
+  margin: 0 auto; /* Center-align items */
+}
+
+/* Food image styling */
+.food-image {
+  width: 100%;
+  height: 250px;
+  object-fit: cover;
+  border-top-left-radius: 8px;
+  border-top-right-radius: 8px;
+}
+
+/* Content container */
+.menu-item-details {
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+/* Header for name and price */
+.menu-item-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 0.5rem;
+}
+
+/* Menu item name */
+.menu-item-name {
+  font-size: 1.25rem;
+  font-weight: bold;
+  margin: 0;
+}
+
+/* Price styling */
+.menu-item-price {
+  font-size: 1rem;
+  font-weight: bold;
+  color: #d9534f; /* Placeholder color for now */
+}
+
+/* Description styling */
+.menu-item-description {
+  font-size: 0.875rem;
+  color: #666;
+  margin: 0.5rem 0 1rem;
+}
+
+/* Order button styling */
+.add-to-cart-button {
+  background: none;
+  border: none;
+  color: inherit;
+  font-size: 0.875rem;
+  font-weight: bold;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+
+  margin-top: auto;
+}
+
+/* Optional: Icon styling for "Order a delivery" button */
+.add-to-cart-button::after {
+  content: "🚚"; /* Placeholder icon */
+  margin-left: 0.5rem;
+}
+
+@media (max-width: 768px) {
+  .menu-item {
+    align-items: center; /* Center-align items within the card */
+  }
+}
+
+/* Highlights heading container */
+.highlights-heading {
+  display: flex;
+  justify-content: space-around; /* Space around the heading and button */
+  align-items: center; /* Vertically center the items */
+  gap: 1rem; /* Optional: adds some space between heading and button */
+  margin-bottom: 1.5rem; /* Space below the heading section */
+}
+
+/* Responsive styling for smaller screens */
+@media (max-width: 768px) {
+  .highlights-heading {
+    flex-direction: column; /* Stack heading and button vertically */
+    text-align: center; /* Center-align text */
+  }
+}
+
+/* Review Card Styling */
+.review-card {
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow for elevation */
+  overflow: hidden;
+  max-width: 300px; /* Set a max width for each card */
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  padding: 1rem;
+  margin: 0 auto; /* Center-align within the grid */
+  height: 100%; /* Allow cards to expand to equal height */
+  text-align: center; /* Center-align text content */
+}
+@media (max-width: 768px) {
+  .testimonials-heading {
+    text-align: center; /* Center-align text */
+  }
 }
 
-.App-link {
-  color: #61dafb;
-}
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.testimonials-heading {
+  text-align: center; /* Center-align text */
+  margin: 2rem 0; /* Space above and below the heading */
 }
