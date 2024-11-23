@@ -14,17 +14,17 @@ const About = () => {
           rich culinary heritage of the Mediterranean.
         </p>
       </div>
-      <div>
-        <div className="about-images">
+      <div className="about-images">
+        <div className="about-image1">
           <img
             src="/assets/icons_assets/Mario and Adrian A.jpg"
             alt="Mario and Adrian A.jpg"
-            className="about-image"
           />
+        </div>
+        <div className="about-image2">
           <img
             src="/assets/icons_assets/Mario and Adrian b.jpg"
             alt="Mario and Adrian B.jpg"
-            className="about-image"
           />
         </div>
       </div>

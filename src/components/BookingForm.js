@@ -29,6 +29,7 @@ const BookingForm = ({
     const isSubmitted = submitAPI(reservationsData);
     if (isSubmitted) {
       navigate("/confirmed"); // Navigate to the confirmation page
+      window.scrollTo({ top: 0, behavior: "smooth" });
     } else {
       alert("Failed to confirm booking. Please try again.");
     }
@@ -44,6 +45,21 @@ const BookingForm = ({
       setIsFormValid(false);
     }
   }, [reservationsData]);
+
+  const getTodayDate = () => {
+    const today = new Date();
+    const year = today.getFullYear();
+    const month = String(today.getMonth() + 1).padStart(2, "0");
+    const day = String(today.getDate()).padStart(2, "0");
+    return `${year}-${month}-${day}`;
+  };
+
+  useEffect(() => {
+    setReservationsData((prev) => ({
+      ...prev,
+      date: getTodayDate(),
+    }));
+  }, [setReservationsData]);
 
   return (
     <section id="reservations">
@@ -67,6 +83,7 @@ const BookingForm = ({
           onChange={handleChange}
           required
           value={reservationsData.date}
+          min={getTodayDate()}
         />
 
         <label htmlFor="time">Time:</label>

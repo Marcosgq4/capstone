@@ -12,7 +12,7 @@ const Hero = () => {
           bold flavors, and a cozy atmosphere for an unforgettable meal. Your
           table is ready, come feast with us!
         </p>
-        <Button text="Reserve a Table" route="reservations" />
+        <Button text="Reserve a Table" route="#reservations" />
       </div>
       <div className="hero-image">
         <Image

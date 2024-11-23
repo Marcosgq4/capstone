@@ -1,3 +1,43 @@
+:root {
+  --secondary-light-gray: #edefee;
+  --secondary-bright-yellow: #f4ce14;
+  --secondary-warm-peach: #ee9972;
+  --secondary-light-peach: #fbdabb;
+  --primary-green-olive: #495e57;
+  --primary-yellow: #f4ce14;
+}
+
+body {
+  font-family: "Poppins", sans-serif; /* Primary font */
+  color: #495e57; /* Olive Green for text */
+  background-color: #ffffff; /* White background */
+  margin: 0;
+  padding: 0;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: "Merriweather", serif; /* Secondary font for headings */
+  color: #f4ce14; /* Yellow for headings */
+  margin: 0;
+}
+
+p {
+  line-height: 1.6;
+  color: #495e57; /* Olive Green for body text */
+}
+
+.menu-toggle {
+  background: none;
+  border: none;
+  font-size: 1.5rem;
+  cursor: pointer;
+}
+
 /* Images */
 
 .food-image {
@@ -84,6 +124,57 @@
   gap: 1rem;
 }
 
+.nav-links ul li {
+  text-align: center; /* Center align the text */
+}
+
+.nav-links ul li a {
+  text-decoration: none; /* Remove underline */
+  padding: 0.5rem 1rem;
+  border-radius: 4px;
+  display: block;
+  color: #495e57; /* Set text color to white */
+  font-size: 1.2rem; /* Make the text larger */
+  font-family: Merriweather; /* Replace with your desired font */
+  font-weight: bold;
+}
+
+.nav-links ul li a:hover {
+  background-color: #444; /* Optional: Highlight on hover */
+  color: #ffc107;
+  font-size: 1.2rem; /* Make the text larger */
+  font-family: Merriweather;
+}
+
+/* button */
+
+button {
+  font-family: "Merriweather", serif; /* Use Merriweather since Poppins isn't working */
+  font-size: 1.2rem; /* Adjust the size for readability */
+  font-weight: bold;
+  padding: 0.8rem 1.5rem; /* Add padding for a comfortable clickable area */
+  border: 2px solid #ffc107; /* Yellow border */
+  border-radius: 18px; /* Rounded corners */
+  background-color: transparent; /* Transparent background by default */
+  color: #ffc107; /* Yellow text */
+  cursor: pointer;
+  transition: all 0.3s ease; /* Smooth transitions */
+}
+
+button:hover {
+  background-color: #ffc107; /* Yellow background on hover */
+  color: #495e57; /* White text on hover */
+  transform: scale(1.05); /* Slightly enlarge the button on hover */
+  border: 2px solid #495e57;
+}
+
+button:disabled {
+  background-color: gray; /* Gray background for disabled buttons */
+  color: white; /* White text for disabled state */
+  cursor: not-allowed; /* Disabled cursor style */
+  opacity: 0.6; /* Slightly transparent to indicate the state */
+}
+
 /* Responsive Styles for Small Screens */
 @media (max-width: 768px) {
   .menu-toggle {
@@ -115,14 +206,38 @@
   .nav-links ul li {
     padding: 0.5rem 0;
   }
+
+  .nav-links ul li a {
+    color: black; /* Make text black by default for better visibility */
+  }
+  .nav-links ul li a:hover {
+    color: #ffc107; /* Keep yellow hover effect */
+  }
 }
 
 .header {
   /* Navbar next to logo in the header */
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  justify-content: space-around;
   padding: 1rem 2rem;
+  position: fixed;
+  top: 0;
+  width: 100%;
+  transition: transform 0.3s ease-in-out, opacity 0.3s ease-in-out;
+  z-index: 1000;
+  box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
+  background-color: #fbdabb;
+}
+
+.header.hidden {
+  transform: translateY(-100%);
+  opacity: 0; /* Optional: fade out */
+}
+
+.header.visible {
+  transform: translateY(0);
+  opacity: 1; /* Optional: fade in */
 }
 
 /* Hero Section */
@@ -132,7 +247,8 @@
   display: flex;
   align-items: stretch;
   justify-content: space-around;
-  padding: 2rem;
+  padding: 5rem;
+  margin-top: 5rem;
 }
 
 /* Ensure text and image containers take up available space */
@@ -188,6 +304,9 @@
 }
 
 /* Highlight Section */
+#highlights {
+  padding: 3rem;
+}
 
 /* Container for each menu item */
 .menu-item {
@@ -291,6 +410,10 @@
   }
 }
 
+#testimonials {
+  padding: 3rem;
+}
+
 /* Review Card Styling */
 .review-card {
   border-radius: 8px;
@@ -314,4 +437,440 @@
 .testimonials-heading {
   text-align: center; /* Center-align text */
   margin: 2rem 0; /* Space above and below the heading */
+}
+
+/*Reservations table*/
+#reservations {
+  padding: 2rem;
+}
+
+.reservation-form {
+  max-width: 90%;
+  width: 500px;
+  margin: 1rem auto;
+  padding: 1rem;
+  background-color: white;
+  border: 1px solid var(--secondary-bright-yellow); /* Bright yellow border */
+  border: 1px solid #000; /* Placeholder for now */
+  border-radius: 8px;
+}
+
+.reservation-form h1 {
+  text-align: center;
+  margin-bottom: 0.5rem;
+  color: var(--primary-green-olive);
+}
+
+.reservation-form label {
+  display: block;
+  margin-bottom: 0.2rem;
+  font-weight: bold;
+  color: var(--secondary-warm-peach);
+}
+
+.reservation-form input,
+.reservation-form select,
+.reservation-form button {
+  width: 100%;
+  padding: 0.8rem;
+  margin-bottom: 1rem;
+  border: 1px solid #000; /* Placeholder for now */
+  border-radius: 4px;
+  font-size: 1rem;
+}
+
+.reservation-form button {
+  font-family: "Merriweather", serif; /* Use Merriweather since Poppins isn't working */
+  font-size: 1.2rem; /* Adjust the size for readability */
+  font-weight: bold;
+  padding: 0.8rem 1.5rem; /* Add padding for a comfortable clickable area */
+  border: 2px solid #ffc107; /* Yellow border */
+
+  background-color: transparent; /* Transparent background by default */
+  color: #ffc107; /* Yellow text */
+  cursor: pointer;
+  transition: all 0.3s ease; /* Smooth transitions */
+}
+
+.reservation-form button:hover {
+  background-color: #ffc107; /* Yellow background on hover */
+  color: #495e57; /* White text on hover */
+  transform: scale(1.05); /* Slightly enlarge the button on hover */
+  border: 2px solid #495e57;
+}
+
+.reservation-form button:disabled {
+  background-color: var(--secondary-light-peach);
+  border-color: var(--secondary-light-peach);
+  color: #999;
+  text-shadow: none; /* No shadow for disabled state */
+  cursor: not-allowed;
+}
+
+.reservation-form input,
+.reservation-form select {
+  background-color: var(--secondary-light-peach); /* Light peach background */
+}
+
+.reservation-form input:focus,
+.reservation-form select:focus {
+  outline: none;
+  border-color: var(--secondary-bright-yellow); /* Bright yellow focus */
+  box-shadow: 0 0 4px var(--secondary-bright-yellow);
+}
+
+.reservation-form button:disabled {
+  cursor: not-allowed;
+}
+
+/* General Footer Styles */
+.footer {
+  display: flex;
+  flex-direction: column; /* Stack by default for smaller screens */
+  align-items: center;
+  padding: 2rem;
+  border-top: 1px solid #000; /* Placeholder for border */
+}
+
+.footer-logo,
+.footer-nav,
+.footer-contact {
+  flex: 1 1 30%; /* Adjust flex-grow and basis for side-by-side alignment */
+  margin: 1rem;
+  text-align: center; /* Center content by default */
+}
+
+/* Footer Logo Section */
+.footer-logo {
+  flex: 1 1 20%; /* Takes up 20% of the width on larger screens */
+  text-align: center;
+  margin-bottom: 1rem; /* Adds space on smaller screens */
+}
+
+.footer-logo img {
+  max-width: 100%;
+  height: auto; /* Ensures the logo is responsive */
+}
+
+/* Footer Navigation Section */
+.footer-nav {
+  flex: 1 1 25%; /* Takes up 25% of the width */
+  margin-bottom: 1rem;
+}
+
+.footer-nav ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: grid; /* Use grid for two-column layout */
+  grid-template-columns: repeat(2, 1fr); /* Two equal-width columns */
+  gap: 0.5rem;
+}
+
+.footer-nav ul li {
+  margin-bottom: 0.5rem;
+}
+
+/* Footer Contact Section */
+.footer-contact {
+  flex: 1 1 25%;
+  margin-bottom: 1rem;
+}
+
+.footer-contact h4 {
+  font-size: 1rem;
+  margin-bottom: 0.5rem;
+}
+
+.footer-contact p {
+  margin: 0.3rem 0;
+  font-size: 0.9rem; /* Slightly smaller text */
+}
+
+/* Footer Container */
+.footer {
+  display: flex;
+  flex-direction: column; /* Stack content on smaller screens */
+  align-items: center;
+  padding: 2rem;
+  border-top: 1px solid #000; /* Placeholder border */
+  width: 100%; /* Ensure full width */
+  box-sizing: border-box; /* Include padding in width */
+}
+
+/* Footer Content for Larger Screens */
+.footer-content {
+  display: flex;
+  justify-content: space-between; /* Spread logo, nav, and contact evenly */
+  width: 100%;
+  max-width: 1200px; /* Limit width for larger screens */
+  flex-wrap: wrap; /* Wrap content on smaller screens */
+}
+
+/* Footer Logo Section */
+.footer-logo {
+  flex: 1 1 20%; /* Allocates 20% width */
+  text-align: center;
+  margin-bottom: 1rem; /* Adds space for smaller screens */
+}
+
+.footer-logo img {
+  max-width: 100%;
+  height: auto; /* Keep logo responsive */
+}
+
+/* Footer Navigation Section */
+.footer-nav {
+  flex: 1 1 25%; /* Allocates 25% width */
+  margin-bottom: 1rem;
+}
+
+.footer-nav h4 {
+  font-size: 1rem;
+  margin-bottom: 0.5rem;
+}
+
+.footer-nav ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: grid; /* Use grid for a two-column layout */
+  grid-template-columns: repeat(2, 1fr); /* Two columns of equal width */
+  gap: 0.5rem;
+}
+
+.footer-nav ul li {
+  margin-bottom: 0.5rem;
+}
+
+/* Footer Contact Section */
+.footer-contact {
+  flex: 1 1 25%; /* Allocates 25% width */
+  margin-bottom: 1rem;
+  text-align: center;
+}
+
+.footer-contact h4 {
+  font-size: 1rem;
+  margin-bottom: 0.5rem;
+}
+
+.footer-contact p {
+  margin: 0.3rem 0;
+  font-size: 0.9rem; /* Slightly smaller text */
+}
+
+/* Footer Social Media Section */
+.footer-social {
+  flex: 1 1 100%; /* Full width for social links */
+  text-align: center;
+  margin-top: 2rem; /* Add spacing above */
+}
+
+.footer-social h4 {
+  font-size: 1rem;
+  margin-bottom: 0.5rem;
+}
+
+.footer-social p {
+  font-size: 0.9rem;
+  margin: 0;
+}
+
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+  .footer-content {
+    flex-direction: column; /* Stack logo, nav, and contact vertically */
+    align-items: center; /* Center-align all items */
+  }
+
+  .footer-logo,
+  .footer-nav,
+  .footer-contact {
+    flex: 1 1 100%; /* Each section takes full width */
+    text-align: center;
+  }
+
+  .menu-toggle {
+    margin: 0 auto;
+    text-align: center;
+  }
+
+  /* Specific for Footer Navigation */
+  .footer-nav .nav-links {
+    position: static; /* Reset position to avoid absolute layout issues */
+    background-color: white; /* Use transparent background for footer */
+    box-shadow: none; /* Remove shadow in footer */
+    padding: 0;
+  }
+
+  .footer-nav .nav-links.open {
+    display: block;
+    text-align: center; /* Align items to the left */
+  }
+
+  .footer-nav .nav-links ul li a {
+    color: var(--secondary-dark); /* Use secondary dark color for text */
+    font-family: "Merriweather", serif; /* Consistent font with the project */
+    font-size: 1rem; /* Readable size on small screens */
+    text-decoration: none;
+  }
+
+  .footer-nav .nav-links ul li a:hover {
+    color: var(--primary-yellow); /* Add the consistent yellow hover effect */
+  }
+}
+
+/* About Section */
+.about {
+  display: flex;
+  flex-direction: column; /* Stack content by default for smaller screens */
+  align-items: center;
+
+  gap: 2rem;
+  padding: 10rem;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.about > div:first-child {
+  flex: 0 1 auto;
+}
+
+/* Text Content */
+.about .heading,
+.about .sub-heading,
+.about .description {
+  margin: 0;
+  text-align: left;
+}
+
+.about .heading {
+  font-size: 2rem; /* Adjust as needed */
+  margin-bottom: 1rem;
+}
+
+.about .sub-heading {
+  font-size: 1.5rem; /* Adjust as needed */
+  margin-bottom: 1rem;
+}
+
+.about .description {
+  font-size: 1rem;
+  line-height: 1.5;
+  max-width: 600px; /* Restrict text width */
+}
+
+/* Images Section */
+.about-images {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  position: relative;
+  width: 100%;
+  max-width: 600px; /* Restrict image container width */
+  gap: 1rem; /* Add spacing between images */
+}
+
+/* Individual Image Divs */
+.about-image1,
+.about-image2 {
+  flex: 1;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden; /* Ensures the image gets cropped */
+  height: 300px; /* Control the visible height */
+  border-radius: 8px; /* Optional: adds rounded corners */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Optional: subtle shadow */
+  max-width: 225px; /* Set a max width for the image */
+}
+
+.about-image1 img,
+.about-image2 img {
+  width: auto;
+  max-width: 100%;
+  height: 100%;
+  object-fit: cover; /* Crop images to fit within dimensions */
+  border-radius: 8px; /* Add rounded corners */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Optional shadow for depth */
+  object-position: right center;
+}
+
+/* Responsive Layout */
+@media (min-width: 768px) {
+  .about {
+    flex-direction: row; /* Place text and images side by side */
+    justify-content: space-around;
+  }
+
+  .about > div:first-child {
+    flex: 0 1 auto;
+  }
+
+  .about-images {
+    flex: 1;
+    max-width: 600px;
+    height: auto;
+    gap: 2rem; /* Add more spacing between images for larger screens */
+  }
+
+  .about-image1 {
+    transform: translateY(-20px); /* Offset the first image upward */
+  }
+
+  .about-image2 {
+    transform: translateY(20px); /* Offset the second image downward */
+  }
+}
+
+@media (max-width: 768px) {
+  .about {
+    flex-direction: column; /* Stack text and images vertically */
+    align-items: center;
+    padding: 5rem;
+  }
+
+  .about-images {
+    flex-direction: column; /* Stack images vertically */
+    align-items: center;
+    gap: 2rem; /* Add spacing between stacked images */
+  }
+
+  .about-image1,
+  .about-image2 {
+    max-width: 100%; /* Make images take full width */
+    height: auto; /* Adjust height automatically */
+  }
+}
+
+.confirmation-page {
+  text-align: center;
+
+  margin-bottom: 4rem; /* Ensure it clears the Navbar */
+  padding-top: 18rem;
+  min-height: 100vh; /* Ensure full-page height */
+}
+
+.confirmation-page h1 {
+  font-size: 2rem;
+  font-weight: bold;
+  color: var(--primary-green-olive);
+  font-size: 4rem;
+}
+
+.confirmation-page p {
+  font-size: 1.5rem;
+  color: #555; /* Use a secondary color */
+}
+
+@media (max-width: 768px) {
+  .confirmation-page h1 {
+    font-size: 1.5rem; /* Smaller font size for small screens */
+  }
+
+  .confirmation-page p {
+    font-size: 1rem;
+  }
 }
